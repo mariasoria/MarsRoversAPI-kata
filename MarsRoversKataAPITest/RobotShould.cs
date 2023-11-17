@@ -22,7 +22,7 @@ public class RobotShould
 
         remoteControl.Execute("f");
 
-        var expectedState = new North(Direction.North, expectedPosition);
+        var expectedState = new North(expectedPosition);
         remoteControl.GetRobotState().Should().BeEquivalentTo(expectedState);
     }
 
@@ -36,7 +36,7 @@ public class RobotShould
 
         remoteControl.Execute("b");
 
-        var expectedState = new South(Direction.South, expectedPosition);
+        var expectedState = new South(expectedPosition);
         remoteControl.GetRobotState().Should().BeEquivalentTo(expectedState);
     }
 
@@ -49,7 +49,7 @@ public class RobotShould
 
         remoteControl.Execute("l");
 
-        var expectedState = new West(Direction.West, initialPosition);
+        var expectedState = new West(initialPosition);
         remoteControl.GetRobotState().Should().BeEquivalentTo(expectedState);
     }
 
@@ -62,7 +62,7 @@ public class RobotShould
 
         remoteControl.Execute("r");
 
-        var expectedState = new East(Direction.East, initialPosition);
+        var expectedState = new East(initialPosition);
         remoteControl.GetRobotState().Should().BeEquivalentTo(expectedState);
     }
 
@@ -76,7 +76,7 @@ public class RobotShould
 
         remoteControl.Execute("rf");
 
-        var expectedState = new East(Direction.East, expectedPosition);
+        var expectedState = new East(expectedPosition);
         remoteControl.GetRobotState().Should().BeEquivalentTo(expectedState);
     }
 
@@ -90,7 +90,7 @@ public class RobotShould
 
         remoteControl.Execute("lb");
 
-        var expectedState = new West(Direction.West, expectedPosition);
+        var expectedState = new West(expectedPosition);
         remoteControl.GetRobotState().Should().BeEquivalentTo(expectedState);
     }
 
@@ -105,7 +105,7 @@ public class RobotShould
 
         remoteControl.Execute("rfrb");
 
-        var expectedState = new South(Direction.South, expectedPosition);
+        var expectedState = new South(expectedPosition);
         remoteControl.GetRobotState().Should().BeEquivalentTo(expectedState);
     }
 }

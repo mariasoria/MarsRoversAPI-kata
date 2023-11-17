@@ -1,5 +1,3 @@
-using MarsRoverKataAPI.Services.Directions;
-
 namespace MarsRoverKataAPI.Services.States
 {
     public abstract class State

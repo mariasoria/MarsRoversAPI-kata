@@ -16,19 +16,19 @@ namespace MarsRoverKataAPI.Services
         {
             if (direction == Direction.South)
             {
-                return new Robot(new South(direction, position));
+                return new Robot(new South(position));
             }
             
             if (direction == Direction.North)
             {
-                return new Robot(new North(direction, position));
+                return new Robot(new North(position));
             }
             
             if (direction == Direction.East)
             {
-                return new Robot(new East(direction, position));
+                return new Robot(new East(position));
             }
-            return new Robot(new West(direction, position));
+            return new Robot(new West(position));
         }
         
         public void TurnRight()
