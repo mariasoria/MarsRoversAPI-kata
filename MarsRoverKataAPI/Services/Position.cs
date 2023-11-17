@@ -2,8 +2,8 @@ namespace MarsRoverKataAPI.Services
 {
     public class Position
     {
-        private int X { get; }
-        private int Y { get; }
+        public readonly int X;
+        public readonly int Y;
 
         public Position(int x, int y)
         {

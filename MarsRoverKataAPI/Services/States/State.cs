@@ -1,10 +1,12 @@
 namespace MarsRoverKataAPI.Services.States
 {
-    public abstract class State
+    public interface State
     {
-        public abstract State MoveForward();
-        public abstract State MoveBackwards();
-        public abstract State TurnRight();
-        public abstract State TurnLeft();
+        public Position Position { get; }
+
+        public State MoveForward();
+        public State MoveBackwards();
+        public State TurnRight();
+        public State TurnLeft();
     }
 }

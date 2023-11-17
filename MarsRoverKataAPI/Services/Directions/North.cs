@@ -11,27 +11,26 @@ namespace MarsRoverKataAPI.Services.Directions
             Position = position;
         }
 
-        public override State MoveForward()
+        public State MoveForward()
         {
             Position = Position.Increment();
             return new North(Position);
         }
 
-        public override State MoveBackwards()
+        public State MoveBackwards()
         {
             Position = Position.Decrement();
             return new North(Position);
         }
 
-        public override State TurnRight()
+        public State TurnRight()
         {
             return new East(Position);
         }
 
-        public override State TurnLeft()
+        public State TurnLeft()
         {
             return new West(Position);
         }
     }
-    
 }

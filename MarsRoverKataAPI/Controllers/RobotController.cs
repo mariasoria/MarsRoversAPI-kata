@@ -1,6 +1,4 @@
 using MarsRoverKataAPI.Services;
-using MarsRoverKataAPI.Services.Directions;
-using MarsRoverKataAPI.Services.States;
 using Microsoft.AspNetCore.Mvc;
 
 namespace MarsRoverKataAPI.Controllers;
@@ -29,23 +27,9 @@ public class RobotController : ControllerBase
         remoteControl.Execute(commands);
 
         var state = robot.State;
-        var direction = Direction(state);
-        // var position = Position(state);
+        var direction = state.GetType().Name;
+        var position = state.Position;
         logger.LogInformation("Todo ok, por ahora");
-        return Ok(new RobotResponse(direction, 0, 0));
-    }
-
-    public static string Direction(State state)
-    {
-        var direction = "";
-        if (state.GetType() == typeof(North))
-            direction = "North";
-        else if (state.GetType() == typeof(South))
-            direction = "South";
-        else if (state.GetType() == typeof(East))
-            direction = "East";
-        else if (state.GetType() == typeof(West))
-            direction = "West";
-        return direction;
+        return Ok(new RobotResponse(direction, position.X, position.Y));
     }
 }
