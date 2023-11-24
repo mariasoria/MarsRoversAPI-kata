@@ -3,7 +3,7 @@ using MarsRoverKataAPI.Services;
 using MarsRoverKataAPI.Services.Directions;
 using Xunit;
 
-namespace MarsRoversKataAPITest;
+namespace MarsRoversKataAPITest.Unit;
 
 // Try to parametrise test by functionality
 // Move forward (facing south, facing north...)
