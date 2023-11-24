@@ -1,3 +1,5 @@
+using MarsRoverKataAPI.Services.States;
+
 namespace MarsRoverKataAPI.Controllers;
 
 public class RobotResponse
@@ -6,10 +8,10 @@ public class RobotResponse
     public int X { get; set; }
     public int Y { get; set; }
 
-    public RobotResponse(string direction, int x, int y)
+    public RobotResponse(State state)
     {
-        Direction = direction;
-        X = x;
-        Y = y;
+        Direction = state.GetType().Name;
+        X = state.Position.X;
+        Y = state.Position.Y;
     }
 }
