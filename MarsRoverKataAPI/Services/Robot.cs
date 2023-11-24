@@ -28,7 +28,7 @@ namespace MarsRoverKataAPI.Services
         {
             var initialPosition = Position.Create(request.X, request.Y);
             var initialDirection = GetInitialDirectionFrom(request);
-            if (initialPosition.IsLeft() || initialDirection.IsLeft())
+            if (initialPosition.HasError() || initialDirection.HasError())
             {
                 return Either<Error, Robot>.Left(new Error("The provided information is not valid"));
             }
@@ -39,23 +39,23 @@ namespace MarsRoverKataAPI.Services
         private static Either<Error, Robot> CreateRobotLocatedIn(Either<Error, Position> initialPosition,
             Either<Error, Direction> initialDirection)
         {
-            if (initialDirection.GetRight() == Direction.South)
+            if (initialDirection.Get() == Direction.South)
             {
-                return Either<Error, Robot>.Right(new Robot(new South(initialPosition.GetRight())));
+                return Either<Error, Robot>.Right(new Robot(new South(initialPosition.Get())));
             }
 
-            if (initialDirection.GetRight() == Direction.North)
+            if (initialDirection.Get() == Direction.North)
             {
-                return Either<Error, Robot>.Right(new Robot(new North(initialPosition.GetRight())));
+                return Either<Error, Robot>.Right(new Robot(new North(initialPosition.Get())));
             }
 
-            if (initialDirection.GetRight() == Direction.East)
+            if (initialDirection.Get() == Direction.East)
             {
-                return Either<Error, Robot>.Right(new Robot(new East(initialPosition.GetRight())));
+                return Either<Error, Robot>.Right(new Robot(new East(initialPosition.Get())));
             }
-            if (initialDirection.GetRight() == Direction.West)
+            if (initialDirection.Get() == Direction.West)
             {
-                return Either<Error, Robot>.Right(new Robot(new West(initialPosition.GetRight())));
+                return Either<Error, Robot>.Right(new Robot(new West(initialPosition.Get())));
             }
             return Either<Error, Robot>.Left(new Error("The provided direction is not valid"));
         }

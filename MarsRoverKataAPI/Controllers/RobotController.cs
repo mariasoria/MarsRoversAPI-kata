@@ -19,16 +19,16 @@ public class RobotController : ControllerBase
     public IActionResult Move([FromBody] CommandsRequest request)
     {
         var robot = Robot.Create(request);
-        if (robot.IsLeft())
+        if (robot.HasError())
         {
-            return BadRequest(robot.GetLeft().Message);
+            return BadRequest(robot.GetError().Message);
         }
 
-        var remoteControl = new RemoteControl(robot.GetRight());
+        var remoteControl = new RemoteControl(robot.Get());
         // ToDo. Validate commands
         remoteControl.Execute(request.Commands);
 
         logger.LogInformation("So far, so good");
-        return Ok(new RobotResponse(robot.GetRight().State));
+        return Ok(new RobotResponse(robot.Get().State));
     }
 }

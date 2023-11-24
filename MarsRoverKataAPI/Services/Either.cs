@@ -10,13 +10,13 @@ public class Either<TError, TData>
 
     public static Either<TError, TData> Left(TError error) => new(LanguageExt.Either<TError, TData>.Left(error));
 
-    public bool IsLeft() => either.IsLeft;
+    public bool HasError() => either.IsLeft;
 
     public bool IsRight() => either.IsRight;
 
-    public TError GetLeft() => either.LeftToList().Head();
+    public TError GetError() => either.LeftToList().Head();
 
-    public TData GetRight() => either.RightToList().Head();
+    public TData Get() => either.RightToList().Head();
 
     public TResult Match<TResult>(Func<TData, TResult> right, Func<TError, TResult> left) => either.Match(right, left);
 }
