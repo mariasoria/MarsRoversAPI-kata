@@ -1,4 +1,5 @@
 using MarsRoverKataAPI.Services;
+using MarsRoverKataAPI.Services.States;
 using Microsoft.AspNetCore.Mvc;
 
 namespace MarsRoverKataAPI.Controllers;
@@ -19,13 +20,12 @@ public class RobotController : ControllerBase
     public IActionResult Move([FromBody] CommandsRequest request)
     {
         var robot = Robot.Create(request);
-        if (robot.HasError())
+        if (robot.HasError() || Command.IsNotValid(request.Commands))
         {
-            return BadRequest(robot.GetError().Message);
+            return BadRequest("Some of the provided information is not valid");
         }
 
         var remoteControl = new RemoteControl(robot.Get());
-        // ToDo. Validate commands
         remoteControl.Execute(request.Commands);
 
         logger.LogInformation("So far, so good");
