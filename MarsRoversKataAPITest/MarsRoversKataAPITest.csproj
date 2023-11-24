@@ -20,4 +20,8 @@
       <ProjectReference Include="..\MarsRoverKataAPI\MarsRoverKataAPI.csproj" />
     </ItemGroup>
 
+    <ItemGroup>
+      <Folder Include="E2E\" />
+    </ItemGroup>
+
 </Project>
