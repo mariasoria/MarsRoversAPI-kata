@@ -53,11 +53,8 @@ namespace MarsRoverKataAPI.Services
             {
                 return Either<Error, Robot>.Right(new Robot(new East(initialPosition.Get())));
             }
-            if (initialDirection.Get() == Facing.Direction.West)
-            {
-                return Either<Error, Robot>.Right(new Robot(new West(initialPosition.Get())));
-            }
-            return Either<Error, Robot>.Left(new Error("The provided direction is not valid"));
+
+            return Either<Error, Robot>.Right(new Robot(new West(initialPosition.Get())));
         }
 
         public void TurnRight()
@@ -79,6 +76,5 @@ namespace MarsRoverKataAPI.Services
         {
             State = State.MoveForward();
         }
-
     }
 }

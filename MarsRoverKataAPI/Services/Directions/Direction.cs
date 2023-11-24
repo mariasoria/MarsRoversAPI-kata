@@ -29,8 +29,12 @@ namespace MarsRoverKataAPI.Services.Directions
                 return Either<Error, Direction>.Right(Direction.East);
             }
 
-            return Either<Error, Direction>.Right(Direction.West);
+            if (request.Direction == Direction.West.ToString())
+            {
+                return Either<Error, Direction>.Right(Direction.West);
+            }
+
+            return Either<Error, Direction>.Left(new Error("The provided direction is not valid"));
         }
     }
 }
-
