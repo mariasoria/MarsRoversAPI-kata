@@ -13,13 +13,13 @@ namespace MarsRoverKataAPI.Services
             State = state;
         }
 
-        public static Robot Create(Position position, Direction direction)
+        public static Robot Create(Position position, Facing.Direction direction)
         {
             return direction switch
             {
-                Direction.South => new Robot(new South(position)),
-                Direction.North => new Robot(new North(position)),
-                Direction.East => new Robot(new East(position)),
+                Facing.Direction.South => new Robot(new South(position)),
+                Facing.Direction.North => new Robot(new North(position)),
+                Facing.Direction.East => new Robot(new East(position)),
                 _ => new Robot(new West(position))
             };
         }
@@ -27,7 +27,7 @@ namespace MarsRoverKataAPI.Services
         public static Either<Error, Robot> Create(CommandsRequest request)
         {
             var initialPosition = Position.Create(request.X, request.Y);
-            var initialDirection = GetInitialDirectionFrom(request);
+            var initialDirection = Facing.GetInitialDirectionFrom(request);
             if (initialPosition.HasError() || initialDirection.HasError())
             {
                 return Either<Error, Robot>.Left(new Error("The provided information is not valid"));
@@ -37,23 +37,23 @@ namespace MarsRoverKataAPI.Services
         }
 
         private static Either<Error, Robot> CreateRobotLocatedIn(Either<Error, Position> initialPosition,
-            Either<Error, Direction> initialDirection)
+            Either<Error, Facing.Direction> initialDirection)
         {
-            if (initialDirection.Get() == Direction.South)
+            if (initialDirection.Get() == Facing.Direction.South)
             {
                 return Either<Error, Robot>.Right(new Robot(new South(initialPosition.Get())));
             }
 
-            if (initialDirection.Get() == Direction.North)
+            if (initialDirection.Get() == Facing.Direction.North)
             {
                 return Either<Error, Robot>.Right(new Robot(new North(initialPosition.Get())));
             }
 
-            if (initialDirection.Get() == Direction.East)
+            if (initialDirection.Get() == Facing.Direction.East)
             {
                 return Either<Error, Robot>.Right(new Robot(new East(initialPosition.Get())));
             }
-            if (initialDirection.Get() == Direction.West)
+            if (initialDirection.Get() == Facing.Direction.West)
             {
                 return Either<Error, Robot>.Right(new Robot(new West(initialPosition.Get())));
             }
@@ -80,25 +80,5 @@ namespace MarsRoverKataAPI.Services
             State = State.MoveForward();
         }
 
-        // ToDo. Move this to Direction??
-        private static Either<Error, Direction> GetInitialDirectionFrom(CommandsRequest request)
-        {
-            if (request.Direction == Direction.North.ToString())
-            {
-                return Either<Error, Direction>.Right(Direction.North);
-            }
-
-            if (request.Direction == Direction.South.ToString())
-            {
-                return Either<Error, Direction>.Right(Direction.South);
-            }
-
-            if (request.Direction == Direction.East.ToString())
-            {
-                return Either<Error, Direction>.Right(Direction.East);
-            }
-
-            return Either<Error, Direction>.Right(Direction.West);
-        }
     }
 }

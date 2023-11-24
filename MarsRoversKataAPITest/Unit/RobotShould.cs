@@ -17,7 +17,7 @@ public class RobotShould
     {
         var initialPosition = new Position(0, 0);
         var expectedPosition = new Position(0, 1);
-        var robot = Robot.Create(initialPosition, Direction.North);
+        var robot = Robot.Create(initialPosition, Facing.Direction.North);
         var remoteControl = new RemoteControl(robot);
 
         remoteControl.Execute("f");
@@ -31,7 +31,7 @@ public class RobotShould
     {
         var initialPosition = new Position(0, 0);
         var expectedPosition = new Position(0, 1);
-        var robot = Robot.Create(initialPosition, Direction.South);
+        var robot = Robot.Create(initialPosition, Facing.Direction.South);
         var remoteControl = new RemoteControl(robot);
 
         remoteControl.Execute("b");
@@ -44,7 +44,7 @@ public class RobotShould
     public void Rotate_Left()
     {
         var initialPosition = new Position(0, 0);
-        var robot = Robot.Create(initialPosition, Direction.North);
+        var robot = Robot.Create(initialPosition, Facing.Direction.North);
         var remoteControl = new RemoteControl(robot);
 
         remoteControl.Execute("l");
@@ -57,7 +57,7 @@ public class RobotShould
     public void Rotate_Right()
     {
         var initialPosition = new Position(0, 0);
-        var robot = Robot.Create(initialPosition, Direction.North);
+        var robot = Robot.Create(initialPosition, Facing.Direction.North);
         var remoteControl = new RemoteControl(robot);
 
         remoteControl.Execute("r");
@@ -71,7 +71,7 @@ public class RobotShould
     {
         var initialPosition = new Position(0, 0);
         var expectedPosition = new Position(1, 0);
-        var robot = Robot.Create(initialPosition, Direction.North);
+        var robot = Robot.Create(initialPosition, Facing.Direction.North);
         var remoteControl = new RemoteControl(robot);
 
         remoteControl.Execute("rf");
@@ -85,7 +85,7 @@ public class RobotShould
     {
         var initialPosition = new Position(0, 0);
         var expectedPosition = new Position(1, 0);
-        var robot = Robot.Create(initialPosition, Direction.North);
+        var robot = Robot.Create(initialPosition, Facing.Direction.North);
         var remoteControl = new RemoteControl(robot);
 
         remoteControl.Execute("lb");
@@ -100,7 +100,7 @@ public class RobotShould
     {
         var initialPosition = new Position(2, 2);
         var expectedPosition = new Position(3, 3);
-        var robot = Robot.Create(initialPosition, Direction.North);
+        var robot = Robot.Create(initialPosition, Facing.Direction.North);
         var remoteControl = new RemoteControl(robot);
 
         remoteControl.Execute("rfrb");
