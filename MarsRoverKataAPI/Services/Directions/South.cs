@@ -32,5 +32,10 @@ namespace MarsRoverKataAPI.Services.Directions
         {
             return new East(Position);
         }
+
+        public string StateName()
+        {
+            return "S";
+        }
     }
 }

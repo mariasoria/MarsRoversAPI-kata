@@ -6,6 +6,11 @@ namespace MarsRoverKataAPI.Services.Directions
     {
         public Position Position { get; private set; }
 
+        public North()
+        {
+            
+        }
+        
         public North(Position position)
         {
             Position = position;
@@ -31,6 +36,11 @@ namespace MarsRoverKataAPI.Services.Directions
         public State TurnLeft()
         {
             return new West(Position);
+        }
+
+        public string StateName()
+        {
+            return "N";
         }
     }
 }

@@ -8,5 +8,6 @@ namespace MarsRoverKataAPI.Services.States
         public State MoveBackwards();
         public State TurnRight();
         public State TurnLeft();
+        public string StateName();
     }
 }
