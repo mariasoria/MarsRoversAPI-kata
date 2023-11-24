@@ -3,7 +3,7 @@ using MarsRoverKataAPI.Services;
 using MarsRoverKataAPI.Services.Directions;
 using Xunit;
 
-namespace MarsRoversKataAPITest;
+namespace MarsRoversKataAPITest.Unit;
 
 public class RobotShould
 {
